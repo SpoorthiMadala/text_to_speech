@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Text to Speech Converter</h1>
+
+        <form action="/" method="POST">
+            <textarea name="text" placeholder="Enter text here..." rows="5" required></textarea>
+            <button type="submit">Convert to Audio</button>
+        </form>
+
+        {% if audio_file %}
+            <div class="audio-section">
+                <h2>Generated Audio</h2>
+                <audio controls>
+                    <source src="{{ audio_file }}" type="audio/wav">
+                </audio>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
